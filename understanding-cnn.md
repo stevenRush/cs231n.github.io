@@ -7,29 +7,29 @@ permalink: /understanding-cnn/
 
 (this page is currently in draft form)
 
-## Visualizing what ConvNets learn
+## Визуализация того, чему обучается сверточная нейронная сеть
 
-Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.
+Несколько способов интерпретации и визуализации сверточных нейронных сетей были опубликованы в последнее время как ответ на распространенную критику о том, что нейронные сети с трудом поддаются интерпретации. В данной статье мы расскажем о некоторых из подходов к визуализации и дадим ссылки на другие статьи по данной тематике.
 
-### Visualizing the activations and first-layer weights
+### Визуализация значений активационной функции и весов первого слоя
 
-**Layer Activations**. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate *dead* filters, and can be a symptom of high learning rates.
+**Активации на различных слоях**. Самый простой способ визуализировать нейросеть - это показать активации в процессе прямого прохода. Для ReLU сетей, активации обычно сначала выглядят плотно и кучковато, но при дальнейшем обучении они становятся более разреженными и локализованными. С помощью визуализации можно заметить один из опасных подводных камней функции активации ReLU - некоторые области после активации состоят полностью из нулей, что может указывать на "мертвые" фильтры и констатирует, что скорость обучения (learning rate) слишком велика.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/cnnvis/act1.jpeg" width="49%">
   <img src="/assets/cnnvis/act2.jpeg" width="49%">
   <div class="figcaption">
-    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.
+    Типичная картина активаций на первом свертночном слое (слева) и на 5 сверточном слое (справа) сети AlexNet, которая анализирует изображение кошки. Каждый квадрат показывает карту активаций, соответствующую какому-либо фильтру. Заметьте, что активации разрежены (большинство значений нули, на картинке это соответствует черному цвету) и достаточно локализированы.
   </div>
 </div>
 
-**Conv/FC Filters.** The second common strategy is to visualize the weights. These are usually most interpretable on the first CONV layer which is looking directly at the raw pixel data, but it is possible to also show the filter weights deeper in the network. The weights are useful to visualize because well-trained networks usually display nice and smooth filters without any noisy patterns. Noisy patterns can be an indicator of a network that hasn't been trained for long enough, or possibly a very low regularization strength that may have led to overfitting.
+**Веса сверточных/полносвязных слоев**. Второй распространенный подход - это визуализация весов нейросети. Наиболее легко интерпретировать веса первого слоя, так как он имеет дело с пикселями изображения напрямую, но также возможно визуализировать и веса более глубоких слоев. Отображение весов полезно потому, что хорошо натренированная сеть обычно имеет четкие и интерпретируемые фильтры без шума. Шумовые фильтры обычно указывают на то, что время обучения нейросети было недостаточно долгим или, возможно, что регуляризация была слишком слабой и это привело к переобучению.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/cnnvis/filt1.jpeg" width="49%">
   <img src="/assets/cnnvis/filt2.jpeg" width="49%">
   <div class="figcaption">
-    Typical-looking filters on the first CONV layer (left), and the 2nd CONV layer (right) of a trained AlexNet. Notice that the first-layer weights are very nice and smooth, indicating nicely converged network. The color/grayscale features are clustered because the AlexNet contains two separate streams of processing, and an apparent consequence of this architecture is that one stream develops high-frequency grayscale features and the other low-frequency color features. The 2nd CONV layer weights are not as interpretable, but it is apparent that they are still smooth, well-formed, and absent of noisy patterns.
+    Типичное изображение фильтров первого сверточного слоя (слева) и второго сверточного слоя (справа) в полностью обученной сети AlexNet. Заметьте, что веса первого уровня выглядят четко и гладко, указывая на то, что обучение нейронной сети сошлось к довольно оптимальному решению. Цветные и черно-белые признаки кластеризованы, потому что AlexNet содержить два отдельных потока обработки изображения и очевидное следствие данной архитектуры, что один поток учится выделять частовстречаемые черно-белые признаки, а второй поток выучивает редковстречающиеся цветные признаки. Веса второго сверточного слоя не совсем интерпретируемы, но очевидно, что изображения являются четкими и гладкими, без шума. 
   </div>
 </div>
 
