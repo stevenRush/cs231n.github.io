@@ -1,11 +1,4 @@
----
-layout: page
-permalink: /understanding-cnn/
----
-
 <a name='vis'></a>
-
-(this page is currently in draft form)
 
 ## Визуализация того, чему обучается сверточная нейронная сеть
 
