@@ -91,9 +91,9 @@ permalink: /understanding-cnn/
 
 [Understanding Deep Image Representations by Inverting Them](http://arxiv.org/abs/1412.0035)
 
-### Насколько хорошо нейросети сохраняют пространственную информацию?
+### Сохраняют ли нейросети пространственную информацию?
 
-[Do ConvNets Learn Correspondence?](http://papers.nips.cc/paper/5420-do-convnets-learn-correspondence.pdf) (tldr: yes)
+[Do ConvNets Learn Correspondence?](http://papers.nips.cc/paper/5420-do-convnets-learn-correspondence.pdf) (короче: да)
 
 ### Построение графика качества, как функции атрибутов изображения
 
